@@ -19,4 +19,4 @@
       ansible.builtin.copy:
         src: info.php
         dest: /var/www/html/info.php
-        remote_src: true 
+        
