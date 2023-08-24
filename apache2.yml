@@ -1,0 +1,22 @@
+---
+- name: install apache2
+  hosts:
+  become: yes
+  tasks:
+    - name: install apache
+      ansible.builtin.apt:
+        name: apache2
+        state: present 
+        update_cache: yes
+    - name: install php
+      ansible.builtin.apt:
+        pkg:
+        - php
+        - libapache2-mod-php
+        - php-mysql
+        state: present 
+    - name: copy file 
+      ansible.builtin.copy:
+        src: info.php
+        dest: /var/www/html/info.php
+        remote_src: true 
